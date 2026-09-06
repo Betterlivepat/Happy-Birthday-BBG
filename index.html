@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday Gourii ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- Chapter 1: The Entrance (Welcome Screen) -->
+<div id="welcome" class="welcome-screen">
+    <!-- ☁️ Floating Clouds (Clickable!) -->
+    <div class="cloud cloud-1" onclick="tapCloud(event)">☁️</div>
+    <div class="cloud cloud-2" onclick="tapCloud(event)">☁️</div>
+    <div class="cloud cloud-3" onclick="tapCloud(event)">☁️</div>
+
+    <div class="bg-float bg-float-1">💖</div>
+    <div class="bg-float bg-float-2">✨</div>
+    <div class="bg-float bg-float-3">🌸</div>
+    <div class="bg-float bg-float-4">⭐</div>
+
+    <div class="welcome-card">
+        <!-- 🐰 Interactive Peeking Bunny -->
+        <div class="peeking-bunny" onclick="tapBunny(event)" title="Tap me!">🐰</div>
+        <div class="card-bow">🎀</div>
+
+        <div class="cute-badge">✨ A Little Birthday Story ✨</div>
+        <h1 class="welcome-title">Happy Birthday, My Love 💕</h1>
+        <p class="welcome-subtitle">Every great story has a beginning... ready to step into ours?</p>
+        
+        <!-- Replace startBtn in #welcome with this block -->
+<div class="love-meter-box">
+    <div class="meter-label">
+        <span>Fill with Love 💕</span>
+        <span id="meterPercent">0%</span>
+    </div>
+    <input type="range" id="loveSlider" min="0" max="100" value="0" oninput="updateLoveMeter(this.value)">
+</div>
+
+<button id="startBtn" class="cute-pulse-btn locked-btn" disabled onclick="startJourney()">
+    <span id="startBtnText">🔒 Drag to 100% to Unlock 🌸</span>
+</button>
+    </div>
+</div>
+
+<!-- Chapter 2: The Envelope & Letter -->
+<div id="envelope">
+    <div class="washi-tape tape-top-left"></div>
+    <div class="washi-tape tape-top-right"></div>
+    
+    <!-- 📮 Interactive Postal Stamp -->
+    <div class="postal-stamp" onclick="stampMail(event)" title="Tap to stamp!">
+        🌸<br>LOVE MAIL
+    </div>
+
+    <div id="letterPaper">💌</div>
+    <div class="envelope-body"></div>
+    <div class="envelope-flap"></div>
+
+    <div class="seal" id="seal">
+        <span class="seal-letter">G</span>
+        <span class="seal-heart">❤️</span>
+    </div>
+
+    <p class="envelope-hint">✨ Tap the wax seal to open your letter ✨</p>
+</div>
+
+<!-- Unfolded Letter Screen -->
+<div id="story">
+    <div class="washi-tape tape-letter-left"></div>
+    <div class="washi-tape tape-letter-right"></div>
+
+    <div class="story-header">
+        <span class="cute-badge">💌 CHAPTER 2</span>
+        <h2>A Letter For You ❤️</h2>
+    </div>
+
+    <div id="letter"></div>
+
+    <button id="nextBtn" class="cute-pulse-btn">📖 Turn the Page →</button>
+</div>
+
+<!-- 🎟️ Mini-Game 1: Scratch-Off Coupon Card -->
+<div id="scratchModal" class="mini-game-screen" style="display:none;">
+    <div class="mini-game-card">
+        <div class="cute-badge">🎟️ A SPECIAL SURPRISE 🎟️</div>
+        <h2 class="game-title">Scratch To Reveal Your Gift!</h2>
+        <p class="game-subtitle">Use your finger or mouse to scratch off the top coating ✨</p>
+        
+        <div class="scratch-container">
+            <!-- Secret Reward Hidden Underneath -->
+           <!-- Secret Reward Hidden Underneath -->
+<div class="coupon-underlay">
+    <span class="coupon-icon">💖👑</span>
+    <h3>BIRTHDAY VOUCHER</h3>
+    <p>Valid for Unlimited Hugs & Kisses (Exclusive to Gourii!) 💕</p>
+</div>
+            <!-- Canvas Overlay that gets scratched off -->
+            <canvas id="scratchCanvas" width="300" height="180"></canvas>
+        </div>
+
+        <button id="scratchNextBtn" class="cute-pulse-btn" style="display:none;" onclick="finishScratchGame()">
+            <span>Continue to Chapter 2 🌸 →</span>
+        </button>
+    </div>
+</div>
+
+<!-- Chapter 2: A Girl Named Gourii (Intro Screen) -->
+<div id="chapter2" style="display:none;" onclick="popCardHeart(event)">
+    <div class="satin-bookmark">CH. 02 🌸</div>
+    <div class="card-aura-glow"></div>
+
+    <div class="washi-tape tape-ch2-left"></div>
+    <div class="washi-tape tape-ch2-right"></div>
+
+    <div class="ch2-pet" id="ch2Pet" onclick="petMascot(event)" title="Tap me!">🧸</div>
+
+    <!-- 👑 Interactive Crown Mascot -->
+    <div class="chapter2-mascot" onclick="tapCrown(event)" title="Tap the crown!">👑</div>
+    <div class="cute-badge">✨ CHAPTER 2: THE MAIN CHARACTER ✨</div>
+    
+    <h1 class="chapter2-title">A Girl Named Gourii</h1>
+    
+    <div class="cute-divider">
+        <span></span>
+        <p>✨ 💕 ✨</p>
+        <span></span>
+    </div>
+
+    <p id="chapter2Text"></p>
+
+    <div class="trait-badges" id="traitBadges">
+        <span class="trait-badge">✨ Brightest Smile</span>
+        <span class="trait-badge">🌸 Kindest Heart</span>
+        <span class="trait-badge">💖 Pure Soul</span>
+        <span class="trait-badge">🌷 Favorite Person</span>
+    </div>
+
+    <button id="chapter2Next" class="cute-pulse-btn" style="display: none;"> 
+        <span>Continue 🌸</span>
+    </button>
+</div>
+
+<!-- 🫙 Mini-Game / Feature: Jar of Sweet Notes -->
+<div id="noteJarModal" class="mini-game-screen" style="display:none;">
+    <div class="mini-game-card jar-card">
+        <div class="cute-badge">🫙 A JAR OF REASONS 🫙</div>
+        <h2 class="game-title">Little Notes For You ❤️</h2>
+        <p class="game-subtitle">Tap the jar to pop the cork & draw a note!</p>
+
+        <div class="jar-interactive-container" onclick="drawNote(event)">
+            <!-- 🫙 Realistic Glass Mason Jar Container -->
+            <div class="real-jar-wrapper" id="glassJar">
+                <!-- Soft Floor Drop Shadow -->
+                <div class="jar-drop-shadow"></div>
+
+                <!-- Realistic Wooden Cork Lid -->
+                <div class="real-cork" id="jarCork"></div>
+                
+                <!-- Glass Rim & Neck -->
+                <div class="glass-lip"></div>
+                <div class="glass-neck"></div>
+                <div class="jar-ribbon-tag">🎀</div>
+
+                <!-- Main Contoured Glass Body -->
+                <div class="real-glass-body">
+                    <!-- Glass Refraction Glare Effects -->
+                    <div class="glass-glare-curved"></div>
+                    <div class="glass-glare-secondary"></div>
+                    <div class="glass-thick-base"></div>
+
+                    <!-- Realistic Folded Pastel Sticky Notes Inside Jar -->
+                    <div class="jar-contents-inner">
+                        <div class="mini-note note-1"><span class="note-crease"></span></div>
+                        <div class="mini-note note-2"><span class="note-crease"></span></div>
+                        <div class="mini-note note-3"><span class="note-crease"></span></div>
+                        <div class="mini-note note-4"><span class="note-crease"></span></div>
+                        <div class="mini-note note-5"><span class="note-crease"></span></div>
+                        <div class="mini-note note-6"><span class="note-crease"></span></div>
+                        <div class="mini-note note-7"><span class="note-crease"></span></div>
+                    </div>
+                </div>
+            </div>
+            <p class="jar-tap-hint">✨ Tap the jar to open a note ✨</p>
+        </div>
+
+        <!-- Unfolded Note Display Card (Cleaned up - no draw again button) -->
+        <div id="notePaperCard" class="note-paper" style="display:none;">
+            <div class="note-tape"></div>
+            <p id="noteTextContent">Your cute note will appear here!</p>
+        </div>
+
+        <button id="noteJarNextBtn" class="cute-pulse-btn" onclick="finishNoteJar()">
+            <span>Continue to Memory Photos 📸 →</span>
+        </button>
+    </div>
+</div>
+
+<!-- Photo Chapter: Polaroid Gallery -->
+<div id="photoChapter" style="display:none;" onclick="popPhotoHeart(event)">
+    <div class="cute-badge" id="photoBadge">✨ MEMORY 1 OF 4 ✨</div>
+
+    <!-- 🖼️ 3D Interactive Polaroid Frame -->
+    <div class="polaroid-frame" id="polaroidFrame" onmousemove="tiltPolaroid(event)" onmouseleave="resetPolaroidTilt()">
+        <div class="washi-tape tape-polaroid-left"></div>
+        <div class="washi-tape tape-polaroid-right"></div>
+        
+        <!-- 🧸 Interactive Sticker -->
+        <div class="polaroid-sticker" onclick="tapSticker(event)" title="Tap me!">🧸</div>
+
+        <div class="photo-wrapper">
+            <img id="photo" src="images/photos/photo1.jpg" alt="Gourii">
+        </div>
+
+        <p id="photoCaption">Today... the world celebrates you. ❤️</p>
+    </div>
+
+    <button id="photoNext" class="cute-pulse-btn">
+        <span>Next Memory 🌸</span>
+    </button>
+</div>
+
+<!-- 🌸 K-Drama Bloom Transition Overlay -->
+<div id="transitionScreen">
+    <div id="transitionPetals"></div>
+</div>
+
+<!-- 🍰 Mini-Game 2: Catch The Birthday Treats Arcade -->
+<div id="catchModal" class="mini-game-screen" style="display:none;">
+    <div class="mini-game-card">
+        <div class="cute-badge">🎮 MINI-GAME 🎮</div>
+        <h2 class="game-title">Catch The Treats! 🍰</h2>
+        <p class="game-subtitle">Move the basket left & right to catch 10 treats!</p>
+
+        <div class="score-pill">Caught: <span id="catchScore">0</span> / 10</div>
+
+        <div class="arcade-viewport">
+            <canvas id="catchCanvas" width="320" height="340"></canvas>
+        </div>
+
+        <button id="catchNextBtn" class="cute-pulse-btn" style="display:none;" onclick="finishCatchGame()">
+            <span>Step Into Chapter 3 🌼 →</span>
+        </button>
+    </div>
+</div>
+
+<!-- Chapter 3: The Little Things (Botanical Arch) -->
+<div id="chapter3" style="display:none;" onclick="popBotanicalPollen(event)">
+    <div class="arch-sun-glow"></div>
+
+    <!-- Replace the old daisy-sunburst with this: -->
+    <div class="interactive-garden" onclick="waterPlant()">
+        <div id="flowerPot">🌱</div>
+        <div id="wateringCan">🚰</div>
+    </div>
+    <p class="garden-hint" id="gardenHint">Tap to water the plant! (0/3)</p>
+
+    <p class="ch3-chapter-tag">CHAPTER III</p>
+    <h2 class="ch3-heading">The Little Things</h2>
+
+    <div class="ch3-text-window">
+        <p id="littleThing"></p>
+    </div>
+
+    <button id="chapter3Next" class="sunbeam-btn" style="display:none;">
+        <span>Step Into The Night Sky 🌙 →</span>
+    </button>
+</div>
+
+<!-- Chapter 4: The Night Sky & Birthday Wish -->
+<div id="chapter4" style="display:none;" onclick="tapNightSky(event)">
+    <!-- 🌙 Interactive Firefly Wish Jar in Night Sky -->
+<div class="firefly-jar-container" onclick="interactFireflyJar(event)">
+    <div class="night-glass-jar" id="nightJar">
+        <div class="night-jar-cork" id="nightJarCork">🪵</div>
+        <div class="night-jar-rim"></div>
+        <div class="night-jar-body">
+            <div class="night-jar-glare"></div>
+            <!-- Glowing Fireflies Inside -->
+            <div class="jar-firefly ff-1"></div>
+            <div class="jar-firefly ff-2"></div>
+            <div class="jar-firefly ff-3"></div>
+            <div class="jar-firefly ff-4"></div>
+            <div class="jar-firefly ff-5"></div>
+        </div>
+    </div>
+    <p class="firefly-hint" id="fireflyHint">✨ Tap the jar to gather fireflies & release a wish ✨</p>
+</div>
+    <div id="nightSky">
+        <!-- 🌌 Cosmic Aurora Borealis Waves -->
+        <div class="aurora-glow aurora-1"></div>
+        <div class="aurora-glow aurora-2"></div>
+
+        <div id="nebula"></div>
+        <img src="images/photos/spaceDust.jpeg" id="spaceDust">
+
+        <!-- 🌙 Crescent Moon with Sleeping Bunny & Floating Zzz -->
+<div class="moon" id="ch4Moon" onclick="tapMoon(event)" title="Tap to cradle!">
+    <div class="sleeping-bunny">🐰</div>
+    <div class="zzz-container">
+        <span>z</span>
+        <span>Z</span>
+        <span>z</span>
+    </div>
+</div>
+
+        <div id="stars"></div>
+        <div id="shootingStar"></div>
+        <div id="constellation"></div>
+    </div>
+
+    <h2 id="wishTitle">🌙 A Wish For You</h2>
+
+    <p id="wishText"></p>
+
+    <button id="wishNext" style="display:none;">Make A Birthday Wish ✨</button>
+
+    <button id="lastThingBtn">✨ One Last Thing...</button>
+
+    <div id="lastMessage"></div>
+
+    <!-- 🔮 Enhanced Magic Orb with Direct Click Handler -->
+<div id="magicOrb" onclick="handleOrbClick()">
+    <div class="orb-ring"></div>
+</div>
+
+    <p id="touchText">✨ One last Touch... ✨</p>
+</div>
+
+<!-- Celebration Scene: Redesigned Natural Woodland Party Wonderland -->
+<div id="celebrationBg" onclick="tapCelebrationBg(event)">
+    <!-- 🌌 Layered Sky, Twinkle Stars & Forest Silhouettes -->
+    <div class="sky-stars"></div>
+    <div class="forest-horizon"></div>
+    
+    <!-- 🚩 Hanging Party Bunting Garland -->
+    <div id="buntingGarland">
+        <span class="flag f-pink"></span>
+        <span class="flag f-yellow"></span>
+        <span class="flag f-mint"></span>
+        <span class="flag f-purple"></span>
+        <span class="flag f-peach"></span>
+        <span class="flag f-blue"></span>
+        <span class="flag f-pink"></span>
+        <span class="flag f-yellow"></span>
+        <span class="flag f-mint"></span>
+        <span class="flag f-purple"></span>
+    </div>
+
+    <div id="fairyLights"></div>
+    <div id="lanternContainer"></div>
+    <div id="bloomContainer"></div>
+    <div id="balloonContainer"></div>
+
+    <!-- ✨ Overhead Celebration Banner -->
+    <div id="celebrationBanner" class="celebration-banner">
+        <span>✨ HAPPY BIRTHDAY GOURII ✨</span>
+        <p class="banner-sub">A magical day made just for you! 💕</p>
+    </div>
+
+    <!-- 🌿 Festival Ground with Lush Flowers & Mushrooms -->
+    <div id="festivalGround">
+        <div class="flora-patch patch-left">🌸 🌼 🍄 🌿 🌸</div>
+        <div class="flora-patch patch-center-left">🌼 🌷 🍄</div>
+        <div class="flora-patch patch-center-right">🍄 🌸 🌷</div>
+        <div class="flora-patch patch-right">🌺 🌼 🍄 🌿 🌸</div>
+    </div>
+
+    <!-- 🎂 Table & Cake with Ground Shadow -->
+    <div id="cakeTable">
+        <div class="table-shadow"></div>
+        <div id="tableTop"></div>
+        <div class="tableLeg left"></div>
+        <div class="tableLeg right"></div>
+
+        <div id="cake">
+            <div id="candles">
+                <div class="candle"></div>
+                <div class="candle"></div>
+                <div class="candle"></div>
+                <div class="candle"></div>
+                <div class="candle"></div>
+            </div>
+
+            <div id="cakeTopper"></div>
+
+            <!-- Top Tier -->
+            <div class="tier tier3">
+                <div class="icing"></div> 
+                <div class="creamBorder">
+                    <span class="cream c1"></span><span class="cream c2"></span><span class="cream c3"></span>
+                    <span class="cream c4"></span><span class="cream c5"></span><span class="cream c6"></span><span class="cream c7"></span>
+                </div>
+            </div>
+
+            <!-- Middle Tier -->
+            <div class="tier tier2">
+                <div class="icing"></div>
+                <div class="cake-text">Happy Birthday<br>Gourii</div>
+                <div class="creamBorder">
+                    <span class="cream c1"></span><span class="cream c2"></span><span class="cream c3"></span>
+                    <span class="cream c4"></span><span class="cream c5"></span><span class="cream c6"></span><span class="cream c7"></span>
+                </div>
+            </div>
+
+            <!-- Bottom Tier -->
+            <div class="tier tier1">
+                <div class="icing"></div>
+                <div class="creamBorder">
+                    <span class="cream c1"></span><span class="cream c2"></span><span class="cream c3"></span>
+                    <span class="cream c4"></span><span class="cream c5"></span><span class="cream c6"></span><span class="cream c7"></span>
+                </div>
+                <div class="cakeFlowers">
+                    <span class="cakeFlower f1"></span><span class="cakeFlower f2"></span>
+                    <span class="cakeFlower f3"></span><span class="cakeFlower f4"></span>
+                </div>
+                <div class="strawberries">
+                    <span class="berry b1"></span><span class="berry b2"></span>
+                    <span class="berry b3"></span><span class="berry b4"></span>
+                </div>
+                <div class="pearlBorder">
+                    <span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+            <div id="cakeShine"></div>
+        </div>
+    </div>
+
+    <div id="sparkles"></div>
+
+    <!-- 🐾 Cute Storybook Woodland Animals with Paws, Ears & Party Hats -->
+
+<!-- 🐰 Bunny Character -->
+<div class="bunny animal-char" onclick="petAnimal(event, 'bunny', 'Yay! Happy Birthday Gourii! 🐰💖')">
+    <div class="speech-bubble">Yay! 🐰</div>
+    <div class="ground-shadow"></div>
+    <div class="party-hat hat-bunny">
+        <div class="hat-cone"></div>
+    </div>
+    <svg class="animal-svg" viewBox="0 0 140 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Soft Fluffy Tail -->
+        <circle cx="106" cy="120" r="14" fill="#FFF8F6" stroke="#5C4033" stroke-width="2.5"/>
+        
+        <!-- Left & Right Ears -->
+        <path d="M48,48 C32,25 25,-12 42,-18 C56,-22 60,18 56,48 Z" fill="#FFF8F6" stroke="#5C4033" stroke-width="2.5"/>
+        <path d="M47,40 C36,22 31,-5 42,-9 C50,-12 53,20 50,40 Z" fill="#FFD6E0"/>
+        <path d="M92,48 C108,25 115,-12 98,-18 C84,-22 80,18 84,48 Z" fill="#FFF8F6" stroke="#5C4033" stroke-width="2.5"/>
+        <path d="M93,40 C104,22 109,-5 98,-9 C90,-12 87,20 90,40 Z" fill="#FFD6E0"/>
+
+        <!-- Chubby Body -->
+        <path d="M40,90 C32,118 42,142 70,142 C98,142 108,118 100,90 C90,78 50,78 40,90 Z" fill="#FFF8F6" stroke="#5C4033" stroke-width="2.5"/>
+        <ellipse cx="70" cy="112" rx="22" ry="20" fill="#FFF0F3"/>
+
+        <!-- Feet with Paw Pads -->
+        <ellipse cx="48" cy="140" rx="14" ry="8" fill="#FFF8F6" stroke="#5C4033" stroke-width="2"/>
+        <ellipse cx="48" cy="140" rx="8" ry="4" fill="#FFB3C6"/>
+        <ellipse cx="92" cy="140" rx="14" ry="8" fill="#FFF8F6" stroke="#5C4033" stroke-width="2"/>
+        <ellipse cx="92" cy="140" rx="8" ry="4" fill="#FFB3C6"/>
+
+        <!-- Chubby Round Head -->
+        <path d="M30,60 C22,82 42,95 70,95 C98,95 118,82 110,60 C104,40 86,36 70,36 C54,36 36,40 30,60 Z" fill="#FFF8F6" stroke="#5C4033" stroke-width="2.5"/>
+
+        <!-- Cute Hands / Paws -->
+        <path d="M45,95 C52,108 62,110 65,102 C68,95 58,90 48,90 Z" fill="#FFF8F6" stroke="#5C4033" stroke-width="2"/>
+        <path d="M95,95 C88,108 78,110 75,102 C72,95 82,90 92,90 Z" fill="#FFF8F6" stroke="#5C4033" stroke-width="2"/>
+
+        <!-- Face Details: Eyes, Blush, Nose & Smile -->
+        <ellipse cx="52" cy="62" rx="5" ry="7" fill="#3D2B1F"/>
+        <circle cx="50" cy="59" r="2.2" fill="#FFFFFF"/>
+        <circle cx="54" cy="64" r="1" fill="#FFFFFF"/>
+        <ellipse cx="88" cy="62" rx="5" ry="7" fill="#3D2B1F"/>
+        <circle cx="86" cy="59" r="2.2" fill="#FFFFFF"/>
+        <circle cx="90" cy="64" r="1" fill="#FFFFFF"/>
+
+        <ellipse cx="42" cy="72" rx="8" ry="4.5" fill="#FFB3C6" opacity="0.75"/>
+        <ellipse cx="98" cy="72" rx="8" ry="4.5" fill="#FFB3C6" opacity="0.75"/>
+
+        <path d="M67,68 Q70,65 73,68 Q70,73 67,68 Z" fill="#FF70A6"/>
+        <path d="M70,71 L70,75 Q65,79 61,76 M70,75 Q75,79 79,76" stroke="#5C4033" stroke-width="2" stroke-linecap="round" fill="none"/>
+    </svg>
+</div>
+
+<!-- 🦊 Fox Character -->
+<div id="fox" class="animal-char" onclick="petAnimal(event, 'fox', 'You look so pretty today! 🦊✨')">
+    <div class="speech-bubble">Stay Awesome! 🦊</div>
+    <div class="ground-shadow"></div>
+    <div class="party-hat hat-fox">
+        <div class="hat-cone"></div>
+    </div>
+    <svg class="animal-svg" viewBox="0 0 140 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Big Fluffy Fox Tail -->
+        <path d="M92,100 C128,90 142,125 115,142 C98,150 82,130 90,105 Z" fill="#FF8C42" stroke="#3D2314" stroke-width="2.5"/>
+        <path d="M115,142 C132,132 126,110 115,105 C120,118 120,132 115,142 Z" fill="#FFF8F0" stroke="#3D2314" stroke-width="2"/>
+
+        <!-- Ears with Dark Dip & Pink Inner -->
+        <path d="M32,48 C22,20 35,2 50,28 Z" fill="#FF8C42" stroke="#3D2314" stroke-width="2.5"/>
+        <path d="M32,48 C25,26 33,10 42,28 Z" fill="#3D2314"/>
+        <path d="M38,44 C33,32 38,20 44,32 Z" fill="#FFC2D1"/>
+
+        <path d="M108,48 C118,20 105,2 90,28 Z" fill="#FF8C42" stroke="#3D2314" stroke-width="2.5"/>
+        <path d="M108,48 C115,26 107,10 98,28 Z" fill="#3D2314"/>
+        <path d="M102,44 C107,32 102,20 96,32 Z" fill="#FFC2D1"/>
+
+        <!-- Chubby Body & White Chest Fluff -->
+        <path d="M40,90 C32,118 42,140 70,140 C98,140 108,118 100,90 C90,78 50,78 40,90 Z" fill="#FF8C42" stroke="#3D2314" stroke-width="2.5"/>
+        <path d="M54,88 C54,122 86,122 86,88 C78,100 62,100 54,88 Z" fill="#FFF8F0"/>
+
+        <!-- Dark Paws / Feet -->
+        <ellipse cx="50" cy="138" rx="12" ry="7" fill="#3D2314"/>
+        <ellipse cx="90" cy="138" rx="12" ry="7" fill="#3D2314"/>
+
+        <!-- Chubby Head with Soft Fluffy Cheeks -->
+        <path d="M22,58 C12,64 24,78 36,80 C48,96 92,96 104,80 C116,78 128,64 118,58 C106,38 34,38 22,58 Z" fill="#FF8C42" stroke="#3D2314" stroke-width="2.5"/>
+        <path d="M40,68 C40,86 70,94 70,96 C70,96 100,86 100,68 C84,76 56,76 40,68 Z" fill="#FFF8F0" stroke="#3D2314" stroke-width="1.5"/>
+
+        <!-- Cute Hands Holding Together -->
+        <path d="M50,94 C56,105 65,106 68,100 C70,95 60,90 52,90 Z" fill="#3D2314"/>
+        <path d="M90,94 C84,105 75,106 72,100 C70,95 80,90 88,90 Z" fill="#3D2314"/>
+
+        <!-- Face Details: Nose, Eyes, Blush -->
+        <polygon points="65,78 75,78 70,84" fill="#3D2314"/>
+        <ellipse cx="52" cy="60" rx="5" ry="7" fill="#3D2314"/>
+        <circle cx="50" cy="57" r="2.2" fill="#FFFFFF"/>
+        <circle cx="54" cy="62" r="1" fill="#FFFFFF"/>
+
+        <ellipse cx="88" cy="60" rx="5" ry="7" fill="#3D2314"/>
+        <circle cx="86" cy="57" r="2.2" fill="#FFFFFF"/>
+        <circle cx="90" cy="62" r="1" fill="#FFFFFF"/>
+
+        <ellipse cx="40" cy="70" rx="7" ry="4" fill="#FF9EAA" opacity="0.7"/>
+        <ellipse cx="100" cy="70" rx="7" ry="4" fill="#FF9EAA" opacity="0.7"/>
+    </svg>
+</div>
+
+<!-- 🐻 Bear Character -->
+<div id="bear" class="animal-char" onclick="petAnimal(event, 'bear', 'Time to eat cake! 🐻🎂')">
+    <div class="speech-bubble">Party Time! 🐻</div>
+    <div class="ground-shadow"></div>
+    <div class="party-hat hat-bear">
+        <div class="hat-cone"></div>
+    </div>
+    <svg class="animal-svg" viewBox="0 0 140 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Round Bear Cub Ears -->
+        <circle cx="38" cy="32" r="18" fill="#A66A38" stroke="#381E0D" stroke-width="2.5"/>
+        <circle cx="38" cy="32" r="10" fill="#FCEADE"/>
+        <circle cx="102" cy="32" r="18" fill="#A66A38" stroke="#381E0D" stroke-width="2.5"/>
+        <circle cx="102" cy="32" r="10" fill="#FCEADE"/>
+
+        <!-- Chubby Bear Body & Belly -->
+        <path d="M36,88 C28,116 38,142 70,142 C102,142 112,116 104,88 C94,76 46,76 36,88 Z" fill="#A66A38" stroke="#381E0D" stroke-width="2.5"/>
+        <ellipse cx="70" cy="114" rx="24" ry="22" fill="#FCEADE"/>
+
+        <!-- Bear Feet & Paw Pads -->
+        <ellipse cx="46" cy="140" rx="14" ry="8" fill="#7A431D" stroke="#381E0D" stroke-width="2"/>
+        <circle cx="46" cy="140" r="4" fill="#FCEADE"/>
+        <ellipse cx="94" cy="140" rx="14" ry="8" fill="#7A431D" stroke="#381E0D" stroke-width="2"/>
+        <circle cx="94" cy="140" r="4" fill="#FCEADE"/>
+
+        <!-- Chubby Bear Head -->
+        <path d="M28,58 C20,80 38,94 70,94 C102,94 120,80 112,58 C106,36 86,32 70,32 C54,32 34,36 28,58 Z" fill="#A66A38" stroke="#381E0D" stroke-width="2.5"/>
+
+        <!-- Arms / Paws Rested on Belly -->
+        <path d="M38,92 C50,108 60,108 64,102 C67,96 56,88 44,88 Z" fill="#A66A38" stroke="#381E0D" stroke-width="2"/>
+        <path d="M102,92 C90,108 80,108 76,102 C73,96 84,88 96,88 Z" fill="#A66A38" stroke="#381E0D" stroke-width="2"/>
+
+        <!-- Soft Cream Muzzle, Nose & Mouth -->
+        <ellipse cx="70" cy="70" rx="18" ry="13" fill="#FCEADE" stroke="#381E0D" stroke-width="1.5"/>
+        <ellipse cx="70" cy="64" rx="7" ry="4.5" fill="#241208"/>
+        <path d="M70,68 L70,74 Q65,78 61,75 M70,74 Q75,78 79,75" stroke="#381E0D" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+        <!-- Shiny Anime Eyes & Blush -->
+        <circle cx="50" cy="56" r="5" fill="#241208"/>
+        <circle cx="48" cy="54" r="2" fill="#FFFFFF"/>
+        <circle cx="90" cy="56" r="5" fill="#241208"/>
+        <circle cx="88" cy="54" r="2" fill="#FFFFFF"/>
+
+        <ellipse cx="38" cy="66" rx="7" ry="4" fill="#FF9EAA" opacity="0.65"/>
+        <ellipse cx="102" cy="66" rx="7" ry="4" fill="#FF9EAA" opacity="0.65"/>
+    </svg>
+</div>
+
+<!-- 🦝 Raccoon Character -->
+<div id="raccoon" class="animal-char" onclick="petAnimal(event, 'raccoon', 'Best birthday ever! 🦝🎉')">
+    <div class="speech-bubble">Woohoo! 🦝</div>
+    <div class="ground-shadow"></div>
+    <div class="party-hat hat-raccoon">
+        <div class="hat-cone"></div>
+    </div>
+    <svg class="animal-svg" viewBox="0 0 140 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Ringed Striped Tail -->
+        <path d="M94,95 C126,90 138,118 118,138 C102,146 88,126 92,98 Z" fill="#8E8E93" stroke="#1C1C1E" stroke-width="2.5"/>
+        <path d="M102,104 Q122,104 118,112 Q102,118 96,112 Z" fill="#2C2C2E"/>
+        <path d="M106,122 Q126,122 114,132 Q102,136 98,128 Z" fill="#2C2C2E"/>
+
+        <!-- Rounded Ears -->
+        <path d="M30,46 C20,24 34,12 46,30 Z" fill="#8E8E93" stroke="#1C1C1E" stroke-width="2.5"/>
+        <path d="M34,42 C26,28 35,18 42,30 Z" fill="#FFC2D1"/>
+        <path d="M110,46 C120,24 106,12 94,30 Z" fill="#8E8E93" stroke="#1C1C1E" stroke-width="2.5"/>
+        <path d="M106,42 C114,28 105,18 98,30 Z" fill="#FFC2D1"/>
+
+        <!-- Chubby Body & Belly -->
+        <path d="M38,88 C30,114 40,140 70,140 C100,140 110,114 102,88 C92,76 48,76 38,88 Z" fill="#8E8E93" stroke="#1C1C1E" stroke-width="2.5"/>
+        <ellipse cx="70" cy="112" rx="22" ry="20" fill="#F2F2F7"/>
+
+        <!-- Paws / Feet -->
+        <ellipse cx="48" cy="138" rx="12" ry="7" fill="#2C2C2E"/>
+        <ellipse cx="92" cy="138" rx="12" ry="7" fill="#2C2C2E"/>
+
+        <!-- Chubby Head with Fluffy Side Cheeks -->
+        <path d="M24,56 C14,62 24,76 36,78 C46,94 94,94 104,78 C116,76 126,62 116,56 C104,38 36,38 24,56 Z" fill="#8E8E93" stroke="#1C1C1E" stroke-width="2.5"/>
+
+        <!-- Bandit Eye Mask -->
+        <path d="M30,58 C42,48 58,54 70,58 C82,54 98,48 110,58 C114,70 100,76 86,74 C70,72 70,76 70,76 C70,76 70,72 54,74 C40,76 26,70 30,58 Z" fill="#2C2C2E"/>
+
+        <!-- White Muzzle & Nose -->
+        <ellipse cx="70" cy="74" rx="15" ry="10" fill="#FFFFFF" stroke="#1C1C1E" stroke-width="1.5"/>
+        <ellipse cx="70" cy="69" rx="5.5" ry="4" fill="#1C1C1E"/>
+        <path d="M70,73 L70,78 Q66,81 63,79 M70,78 Q74,81 77,79" stroke="#1C1C1E" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+
+        <!-- Cute Hands Folded -->
+        <path d="M48,94 C54,104 63,105 66,100 C68,95 58,90 50,90 Z" fill="#2C2C2E"/>
+        <path d="M92,94 C86,104 77,105 74,100 C72,95 82,90 90,90 Z" fill="#2C2C2E"/>
+
+        <!-- Sparkly Eyes peeking through mask -->
+        <circle cx="50" cy="60" r="5" fill="#FFFFFF"/>
+        <circle cx="50" cy="60" r="3.5" fill="#1C1C1E"/>
+        <circle cx="48" cy="58" r="1.5" fill="#FFFFFF"/>
+
+        <circle cx="90" cy="60" r="5" fill="#FFFFFF"/>
+        <circle cx="90" cy="60" r="3.5" fill="#1C1C1E"/>
+        <circle cx="88" cy="58" r="1.5" fill="#FFFFFF"/>
+
+        <ellipse cx="38" cy="72" rx="7" ry="4" fill="#FF9EAA" opacity="0.65"/>
+        <ellipse cx="102" cy="72" rx="7" ry="4" fill="#FF9EAA" opacity="0.65"/>
+    </svg>
+</div>
+
+    <div id="giftContainer"></div>
+
+    <!-- 🌌 Next Step Control Button -->
+    <button id="celebrationNextBtn" class="cute-pulse-btn" onclick="startHeartTransition()">
+        <span>✨ Watch The Stars Shift →</span>
+    </button>
+</div>
+
+<!-- Hidden SVG template with id="heartPath" for 3D coordinates -->
+  <svg viewBox="0 0 600 552" style="display:none;">
+    <path id="heartPath" d="M300,107.77C284.68,55.67,239.76,0,162.31,0,64.83,0,0,82.08,0,171.71c0,.48,0,.95,0,1.43-.52,19.5,0,217.94,299.87,379.69v0l0,0,.05,0,0,0,0,0v0C600,391.08,600.48,192.64,600,173.14c0-.48,0-.95,0-1.43C600,82.08,535.17,0,437.69,0,360.24,0,315.32,55.67,300,107.77" fill="#ee5282"/>
+  </svg>
+
+  <!-- External 3D Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.136.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.136.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+
+<script src="script.js"></script>
+
+<!-- 🎵 Audio Sources -->
+<audio id="bgMusic" src="piano.mp3.mp3" loop preload="auto"></audio>
+<audio id="arcadeMusic" src="arcade.mp3.mp3" loop preload="auto"></audio>
+<audio id="partyPopperSFX" src="party-popper.mp3.wav" preload="auto"></audio>
+<audio id="cosmicMusic" src="cosmic.mp3.mp3" loop preload="auto"></audio>
+<audio id="celebrationMusic" src="celebration.mp3.mp3" loop preload="auto"></audio>
+<audio id="romanticMusic" src="romantic.mp3.mp3" loop preload="auto"></audio>
+
+<!-- 🌸 Unlocked Journey Navigation (6 Stages) -->
+<button id="navToggleBtn" class="chapter-nav-hidden" onclick="toggleNavMenu()">
+    🌸 Chapters
+</button>
+
+<div id="chapterNav" class="chapter-nav-hidden">
+    <span class="nav-label">Jump to:</span>
+    <button onclick="goToChapter(1)">Ch 1</button>
+    <button onclick="goToChapter(2)">Ch 2</button>
+    <button onclick="goToChapter(3)">Ch 3</button>
+    <button onclick="goToChapter(4)">Ch 4</button>
+    <button onclick="goToChapter(5)">Party 🎂</button>
+    <button onclick="goToChapter(6)">Desk 📸</button>
+</div>
+
+<canvas id="fireworksCanvas"></canvas>
+<div id="heartTransition"></div>
+<!-- Top-Down Photo Desk -->
+<div id="photoDesk">
+    <h2 class="desk-title">Our Memories ❤️</h2>
+    <p class="desk-subtitle">(Tap any photo to flip it over)</p>
+
+    <div class="table-surface">
+
+        <!-- 📌 Realistic Top-Left Yellow Sticky Note -->
+        <div class="desk-sticky-note">
+            <div class="washi-tape tape-sticky"></div>
+            <p class="sticky-text">Hope this tiny world brought a big smile to your face today. You deserve all the love and happiness in the world! ❤️</p>
+        </div>
+
+        <!-- 🕯️ Interactive Cozy Flickering Candles -->
+        <div class="desk-candle candle-top-right" onclick="tapDeskCandle(event)">
+            <div class="candle-glow"></div>
+            <div class="candle-body">
+                <div class="wax-pool"></div>
+                <div class="candle-wick"></div>
+                <div class="candle-flame"></div>
+            </div>
+        </div>
+
+        <div class="desk-candle candle-bottom-left" onclick="tapDeskCandle(event)">
+            <div class="candle-glow"></div>
+            <div class="candle-body">
+                <div class="wax-pool"></div>
+                <div class="candle-wick"></div>
+                <div class="candle-flame"></div>
+            </div>
+        </div>
+
+        <!-- ☕ Cozy Props: Steam Mug & Camera -->
+        <div class="desk-prop desk-mug" onclick="tapMug(event)" title="Tap for cozy coffee!">
+            <div class="steam-container">
+                <span>💕</span>
+                <span>✨</span>
+            </div>
+            <div class="mug-icon">☕</div>
+        </div>
+
+        <div class="desk-prop desk-camera" onclick="tapCamera(event)" title="Tap to take a photo!">
+            <span>📷</span>
+        </div>
+
+        <!-- 🌹 Scattered Rose Petals -->
+        <div class="rose-petal" style="top: 18%; left: 28%; --rot: 35deg; --scale: 0.9;"></div>
+        <div class="rose-petal" style="top: 10%; left: 84%; --rot: -50deg; --scale: 1.1;"></div>
+        <div class="rose-petal" style="top: 48%; left: 26%; --rot: 110deg; --scale: 0.8;"></div>
+        <div class="rose-petal" style="top: 68%; left: 88%; --rot: -15deg; --scale: 1.0;"></div>
+        <div class="rose-petal" style="top: 82%; left: 15%; --rot: 75deg; --scale: 1.25;"></div>
+        <div class="rose-petal" style="top: 30%; left: 60%; --rot: -80deg; --scale: 0.85;"></div>
+        <div class="rose-petal" style="top: 76%; left: 52%; --rot: 140deg; --scale: 1.05;"></div>
+        <div class="rose-petal" style="top: 24%; left: 8%; --rot: -25deg; --scale: 0.95;"></div>
+
+        <!-- Photo 1: Portrait (photto11.jpg) -->
+        <div class="photo-card" style="width: 165px; height: 220px; top: 4%; left: 26%; --rot: -8deg; --throw-x: -160px; --spin: 720deg;">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="images/photos/photto11.jpg" alt="Memory 1">
+                </div>
+                <div class="card-back">
+                    <p>20 June 2026 ✨ Our very first date Little did I know it was the start of my favorite story ❤️</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo 2: Landscape (photo12.jpg) -->
+        <div class="photo-card" style="width: 220px; height: 165px; top: 6%; left: 50%; --rot: 4deg; --throw-x: -20px; --spin: -540deg;">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="images/photos/photo12.jpg" alt="Memory 2">
+                </div>
+                <div class="card-back">
+                    <p>The first time I visited your place It already felt like home just because you were there 🌸</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo 3: Portrait (photo13.jpg) -->
+        <div class="photo-card" style="width: 165px; height: 220px; top: 4%; left: 74%; --rot: -6deg; --throw-x: 140px; --spin: 900deg;">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="images/photos/photo13.jpg" alt="Memory 3">
+                </div>
+                <div class="card-back">
+                    <p>Our failed wasabi plan that turned into an ice cream date! I wouldn't trade these detours for anything 🍦😂</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo 4: Landscape (photo14.jpg) -->
+        <div class="photo-card" style="width: 220px; height: 165px; top: 46%; left: 26%; --rot: 6deg; --throw-x: -120px; --spin: -720deg;">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="images/photos/photo14.jpg" alt="Memory 4">
+                </div>
+                <div class="card-back">
+                    <p>17 July 2026 💖 Our first kiss. I still get butterflies every time I think about this day</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo 5: Landscape (photo15.jpg) -->
+        <div class="photo-card" style="width: 220px; height: 165px; top: 52%; left: 50%; --rot: -5deg; --throw-x: 10px; --spin: 540deg;">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="images/photos/photo15.jpg" alt="Memory 5">
+                </div>
+                <div class="card-back">
+                    <p>My happiest moments are always the ones spent with you 💕</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo 6: Landscape (photo16.jpg) -->
+        <div class="photo-card" style="width: 220px; height: 165px; top: 45%; left: 76%; --rot: 8deg; --throw-x: 130px; --spin: -900deg;">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="images/photos/photo16.jpg" alt="Memory 6">
+                </div>
+                <div class="card-back">
+                    <p>You will always be my favorite person FOREVER & ALWAYS 💖</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🤖 Doraemon's Slim Vertical Strip (Far Top Right Edge) -->
+<div class="doraemon-scroll-strip rolled" id="doraemonPocket" onclick="togglePocket(event)">
+    <div class="scroll-header">
+        <span class="scroll-main-icon">🤖</span>
+        <span class="scroll-icon" id="pocketToggleBadge">📜</span>
+    </div>
+    <div class="scroll-content">
+        <div class="sticker-tray">
+            <div class="sticker-item" onclick="spawnSticker('doraemon', event)" title="Doraemon">
+                <img src="images/doraemon.png" alt="Doraemon" />
+            </div>
+            <div class="sticker-item" onclick="spawnSticker('nobita', event)" title="Nobita">
+                <img src="images/nobita.png" alt="Nobita" />
+            </div>
+            <div class="sticker-item" onclick="spawnSticker('shizuka', event)" title="Shizuka">
+                <img src="images/shizuka.png" alt="Shizuka" />
+            </div>
+            <div class="sticker-item" onclick="spawnSticker('suneo', event)" title="Suneo">
+                <img src="images/suneo.png" alt="Suneo" />
+            </div>
+            <div class="sticker-item" onclick="spawnSticker('gian', event)" title="Gian">
+                <img src="images/gian.png" alt="Gian" />
+            </div>
+            <div class="sticker-item" onclick="spawnSticker('copter', event)" title="Bamboo Copter">
+                <img src="images/copter.png" alt="Bamboo Copter" />
+            </div>
+            <div class="sticker-item" onclick="spawnSticker('door', event)" title="Anywhere Door">
+                <img src="images/door.png" alt="Anywhere Door" />
+            </div>
+            <div class="sticker-item" onclick="spawnSticker('pancake', event)" title="Dorayaki">
+                <img src="images/dorayaki.png" alt="Dorayaki" />
+            </div>
+            <div class="sticker-item" onclick="spawnSticker('bread', event)" title="Memory Bread">
+                <img src="images/bread.png" alt="Memory Bread" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Container layer where placed draggable stickers exist -->
+<div id="placedStickersLayer"></div>
+
+<!-- 🎵 Interactive Bottom-Left Vinyl Record Player -->
+<div class="vinyl-player-container" onclick="toggleVinyl()">
+    <div class="turntable" id="turntable">
+        <div class="tonearm" id="tonearm"></div>
+        <div class="vinyl-record" id="vinylRecord">
+            <div class="vinyl-grooves"></div>
+            <div class="vinyl-label">
+                <span class="label-note">🎵</span>
+            </div>
+        </div>
+    </div>
+    <div class="vinyl-status" id="vinylStatus">Play "Perfect" 🎶</div>
+</div>
+
+<!-- Audio element linked to your local MP3 -->
+<audio id="perfectMusic" src="perfect.mp3" loop preload="auto"></audio>
+
+        <!-- Camera Flash Screen Overlay -->
+<div id="cameraFlashOverlay"></div>
+
+        <!-- 🌸 Replay Button (Appears automatically when all 6 photos are flipped) -->
+        <div id="replayBtnContainer" class="replay-container">
+            <button class="cute-pulse-btn replay-btn" onclick="replayJourney()">
+                <span>🌸 Replay Journey 🌸</span>
+            </button>
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+<!-- 🌸 Top-Down Colorful Flower Spiral Canvas Overlay -->
+<canvas id="flowerSpiralCanvas"></canvas>
+</body>
+</html>
