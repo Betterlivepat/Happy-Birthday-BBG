@@ -2769,8 +2769,7 @@ function triggerRealisticFlowerTransition(currentChapterId, nextChapterId, onSwi
         drawBotanicalRose(centerX, centerY, scale, rot);
         drawBotanicalRose(centerX * 0.3, centerY * 0.3, scale * 0.7, -rot * 1.5);
         drawBotanicalRose(centerX * 1.7, centerY * 0.3, scale * 0.7, rot * 1.5);
-        drawBotanicalRose(centerX * 0.3, centerY * 1.7, scale * 0.7, rot * 1.2);
-        drawBotanicalRose(centerX * 1.7, centerY * 1.7, scale * 0.7, -rot * 1.2);
+        
     }
 
     // STRICT 5.0 SECOND CLOCK-BASED ANIMATION TIMING
