@@ -4224,3 +4224,35 @@ body.theme-desk {
         z-index: 5;
     }
 }
+@media (max-width: 700px) {
+    #chapter4 h2 {
+        font-size: 26px;
+        margin-top: 70px !important; /* pushes title below the moon so it can't overlap */
+        padding: 0 10px;
+    }
+
+    #wishText {
+        font-size: 26px;
+        max-width: 90vw;
+        min-height: auto;
+    }
+
+    .moon {
+        top: 20px;
+        right: 20px;
+        width: 55px;
+        height: 55px;
+        box-shadow: -12px 9px 0 0 #FFF9C4; /* scaled-down crescent to match new size */
+    }
+
+    .sleeping-bunny {
+        font-size: 22px;
+        top: 6px;
+        left: -12px;
+    }
+
+    #lastThingBtn {
+        font-size: 14px;
+        padding: 10px 18px;
+    }
+}
