@@ -4264,3 +4264,79 @@ body.theme-desk {
         padding: 10px 18px;
     }
 }
+@media (max-width: 700px) {
+    /* Shrink the huge banner title so it doesn't wrap into 3 giant lines */
+    .celebration-banner span {
+        font-size: 24px;
+    }
+
+    .banner-sub {
+        font-size: 13px;
+    }
+
+    .celebration-banner {
+        top: 15px;
+        width: 90vw;
+    }
+
+    /* Shrink each animal character so 4 of them + the cake can
+       actually fit across a narrow screen */
+    .animal-char {
+        width: 75px;
+        height: 90px;
+        bottom: 55px;
+    }
+
+    /* Shrink the cake's final resting size (overrides the same
+       animation name so the "landed" scale is smaller on mobile) */
+    @keyframes cakeRise {
+        0%   { opacity: 0; transform: translate(-50%, 120px) scale(0.5); }
+        70%  { opacity: 1; transform: translate(-50%, -10px) scale(0.68); }
+        100% { opacity: 1; transform: translate(-50%, 0) scale(0.62); }
+    }
+
+    #celebrationNextBtn {
+        bottom: 30px;
+        font-size: 14px !important;
+        padding: 10px 20px !important;
+    }
+
+    /* Let the scene scroll if anything still doesn't fit, instead
+       of clipping content off-screen */
+    #celebrationBg {
+        overflow-y: auto;
+    }
+}
+@media (max-width: 700px) {
+    /* Anchor the cake's shrink to the bottom so it stays sitting
+       on the table instead of floating up as it scales down */
+    #cake {
+        transform-origin: center bottom;
+    }
+
+    /* Shrink + reposition each hat to match the smaller animal heads */
+    .party-hat {
+        transform: scale(0.55);
+        transform-origin: top left;
+    }
+
+    .hat-bunny {
+        top: -7px;
+        left: 30px;
+    }
+
+    .hat-fox {
+        top: -6px;
+        left: 31px;
+    }
+
+    .hat-bear {
+        top: -8px;
+        left: 27px;
+    }
+
+    .hat-raccoon {
+        top: -7px;
+        left: 26px;
+    }
+}
