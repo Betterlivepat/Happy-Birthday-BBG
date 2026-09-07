@@ -4186,3 +4186,41 @@ body.theme-desk {
     z-index: 999999; /* Sits above all modals */
     display: none;
 }
+@media (max-width: 700px) {
+    #photoDesk {
+        overflow-y: auto;
+        padding-bottom: 60px;
+    }
+
+    .table-surface {
+        display: flex !important;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: flex-start;
+        gap: 16px;
+        width: 90vw;
+        height: auto;
+        min-height: 78vh;
+        margin-top: 90px; /* clears the sticky note up top */
+    }
+
+    .photo-card {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        width: 42vw !important;
+        height: 54vw !important;
+        max-width: 175px;
+        max-height: 225px;
+    }
+
+    .desk-sticky-note {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%) rotate(-3deg);
+        width: 80vw;
+        max-width: 260px;
+        z-index: 5;
+    }
+}
