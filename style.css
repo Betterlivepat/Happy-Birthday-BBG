@@ -723,6 +723,26 @@ button:hover{
         transform: translate(calc(-50% + var(--tx)), calc(-50% - 40px)) scale(1.3) rotate(15deg);
     }
 }
+.tap-pop-particle {
+    position: fixed;
+    pointer-events: none;
+    font-size: 22px;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    animation: tapPopFloat 0.85s ease-out forwards;
+}
+
+@keyframes tapPopFloat {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(0deg) scale(0.6);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(calc(-50% + var(--px)), calc(-50% + var(--py))) rotate(var(--pr)) scale(1.2);
+    }
+}
 
 /* ===========================================
    🌸 CUTESIE K-DRAMA BLOOM TRANSITION
