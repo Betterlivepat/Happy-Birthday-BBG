@@ -4189,7 +4189,7 @@ body.theme-desk {
 @media (max-width: 700px) {
     #photoDesk {
         overflow-y: auto;
-        padding-bottom: 60px;
+        padding-bottom: 130px;
     }
 
     .table-surface {
@@ -4213,15 +4213,23 @@ body.theme-desk {
         max-width: 175px;
         max-height: 225px;
     }
+    .desk-candle,
+    .desk-prop,
+    .rose-petal {
+        display: none !important;
+    }
 
     .desk-sticky-note {
-        position: absolute;
-        top: 10px;
-        left: 50%;
-        transform: translateX(-50%) rotate(-3deg);
-        width: 80vw;
-        max-width: 260px;
-        z-index: 5;
+        position: static !important;
+        transform: rotate(-2deg);
+        width: 85vw;
+        max-width: 280px;
+        margin: 0 auto 20px auto;
+        order: -1; /* forces it to render first, above the cards */
+    }
+    .vinyl-player-container {
+        transform: scale(0.75);
+        transform-origin: bottom left;
     }
 }
 @media (max-width: 700px) {
