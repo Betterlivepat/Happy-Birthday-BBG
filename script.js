@@ -2856,4 +2856,19 @@ function triggerRealisticFlowerTransition(currentChapterId, nextChapterId, onSwi
     }
 
     requestAnimationFrame(animate);
+}// Open the secret letter and trigger particle burst
+function openSecretLetter(e) {
+    if (e && typeof e.stopPropagation === "function") e.stopPropagation();
+    
+    // Use the existing burst function for a cute effect
+    if (typeof spawnBurstParticles === "function") {
+        spawnBurstParticles(e, ["📜", "✨", "💖", "🌸", "💌"], 14);
+    }
+    
+    document.getElementById('secretLetterModal').style.display = 'flex';
+}
+
+// Close the secret letter
+function closeSecretLetter() {
+    document.getElementById('secretLetterModal').style.display = 'none';
 }
