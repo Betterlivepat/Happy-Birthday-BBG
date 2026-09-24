@@ -4340,3 +4340,291 @@ body.theme-desk {
         left: 26px;
     }
 }
+/* ===========================================
+   📜 ROLLED LETTER & SECRET MODAL (UPDATED)
+=========================================== */
+
+/* 1. The Rolled Paper Cylinder on the Desk (Desktop Position) */
+.desk-rolled-letter {
+    position: absolute;
+    top: 45%; 
+    left: 8%;
+    width: 32px;
+    height: 140px;
+    /* Complex gradient to simulate the 3D cylinder and the shadow of the overlapping paper edge */
+    background: linear-gradient(90deg, 
+        #b89976 0%, 
+        #fffdf5 20%, 
+        #fdf5e6 75%, 
+        #b89976 88%,
+        #7a5c3d 92%, /* dark shadow right before the edge */
+        #fffef9 94%, /* highlight on the overlapping paper edge */
+        #d4b895 100%
+    );
+    /* Small border radius for paper ends (removes the capsule look) */
+    border-radius: 3px 5px 5px 3px; 
+    box-shadow: 
+        6px 10px 15px rgba(0,0,0,0.35), 
+        inset 0 1px 3px rgba(255,255,255,0.7),
+        inset 0 -1px 3px rgba(0,0,0,0.2);
+    transform: rotate(-12deg);
+    cursor: pointer;
+    z-index: 22;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.desk-rolled-letter:hover {
+    transform: rotate(-6deg) scale(1.1);
+}
+
+/* Added visual line to make it look like layered, rolled paper */
+.desk-rolled-letter::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 2px;
+    width: 1px;
+    height: 100%;
+    background: rgba(92, 64, 51, 0.2);
+    box-shadow: -1px 0 2px rgba(0,0,0,0.15);
+}
+
+/* The Red Ribbon Tied Around It */
+.desk-rolled-letter .ribbon {
+    position: absolute;
+    top: 50%;
+    left: -2px;
+    width: 36px; /* Slightly wider than the paper to wrap around it */
+    height: 18px;
+    /* Ribbon gradient to match the cylindrical lighting */
+    background: linear-gradient(90deg, #900c3b 0%, #d81b60 25%, #ff4081 70%, #70092d 100%);
+    transform: translateY(-50%);
+    border-radius: 2px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    z-index: 2; /* keep ribbon above the paper edge line */
+}
+
+/* Cute little hanging ribbon tails */
+.desk-rolled-letter .ribbon::before,
+.desk-rolled-letter .ribbon::after {
+    content: '';
+    position: absolute;
+    top: 14px;
+    width: 6px;
+    height: 14px;
+    background: #b0104a;
+    z-index: -1;
+    border-radius: 0 0 2px 2px;
+}
+
+.desk-rolled-letter .ribbon::before {
+    left: 8px;
+    transform: rotate(15deg);
+}
+
+.desk-rolled-letter .ribbon::after {
+    right: 8px;
+    transform: rotate(-15deg);
+}
+/* ===========================================
+   💌 THE POPUP OVERLAY & LETTER DESIGN
+=========================================== */
+
+/* The Popup Overlay */
+.secret-letter-modal {
+    position: fixed;
+    inset: 0;
+    background: transparent; /* This removes the black transparent screen */
+    z-index: 9999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeInModal 0.4s ease;
+    padding: 20px; 
+}
+
+@keyframes fadeInModal {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* The Unrolled Letter Paper */
+.secret-letter-content {
+    background: #fffefb;
+    background-image: repeating-linear-gradient(#fffefb, #fffefb 39px, #ffe5ec 40px);
+    width: 95%;
+    max-width: 880px; /* WIDENED significantly so the text has room to breathe */
+    max-height: 90vh; /* Keeps it strictly inside the screen height */
+    overflow-y: auto; /* Allows scrolling inside the letter if it gets too tall */
+    border-radius: 16px;
+    padding: 50px 45px 45px 45px;
+    border: 2px solid #ffccd5;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+    position: relative;
+    text-align: center;
+    transform: translateY(0);
+    animation: slideUpModal 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+/* Optional: Styles the scrollbar to make it look cute and match the theme */
+.secret-letter-content::-webkit-scrollbar {
+    width: 8px;
+}
+.secret-letter-content::-webkit-scrollbar-thumb {
+    background: #ffb3c6;
+    border-radius: 10px;
+}
+
+/* Washi Tape on the Letter Corners */
+.secret-letter-content::before,
+.secret-letter-content::after {
+    content: '';
+    position: absolute;
+    top: -12px;
+    width: 85px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.7);
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(255, 182, 193, 0.5) 8px, rgba(255, 182, 193, 0.5) 16px);
+    border: 1px dashed rgba(216, 27, 96, 0.3);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+.secret-letter-content::before { left: 20px; transform: rotate(-6deg); }
+.secret-letter-content::after { right: 20px; transform: rotate(8deg); }.secret-letter-content::after { right: 20px; transform: rotate(8deg); }
+
+@keyframes slideUpModal {
+    from { transform: translateY(50px) scale(0.95); opacity: 0; }
+    to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* Perfect Circle Floating Close Button */
+.close-letter-btn {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background: #ff4081;
+    color: white;
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(216, 27, 96, 0.4);
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.2s;
+    margin: 0;
+    z-index: 20;
+    padding: 0;
+}
+
+.close-letter-btn:hover {
+    background: #d81b60;
+    transform: scale(1.15) rotate(90deg);
+}
+
+/* Typography */
+.secret-letter-content h2 {
+    color: #880e4f;
+    font-size: 42px;
+    font-family: 'Caveat', cursive;
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+
+.secret-para {
+    font-family: 'Caveat', cursive;
+    font-size: 28px;
+    color: #4a154b;
+    line-height: 1.45;
+    margin-bottom: 35px;
+}
+
+/* 📸 Polaroid Style Photos Inside Letter */
+.secret-photos-container {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    flex-wrap: wrap; /* Allows them to wrap into a 2x2 grid */
+    margin-top: 10px;
+}
+
+.secret-photo-frame {
+    position: relative;
+    background: #fffdf9;
+    padding: 8px 8px 30px 8px; /* Scaled down slightly to fit 4 */
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15), inset 0 0 5px rgba(0,0,0,0.03);
+    border-radius: 3px;
+    border: 1px solid #e8e8e8;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+}
+
+/* Scatter effect: giving each photo a unique tilt and slight vertical shift */
+.secret-photo-frame:nth-child(1) { transform: rotate(-5deg) translateY(4px); }
+.secret-photo-frame:nth-child(2) { transform: rotate(4deg) translateY(-4px); }
+.secret-photo-frame:nth-child(3) { transform: rotate(3deg) translateY(4px); }
+.secret-photo-frame:nth-child(4) { transform: rotate(-4deg) translateY(-4px); }
+
+/* Tiny tape on all polaroids */
+.secret-photo-frame::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    width: 40px;
+    height: 14px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px dashed rgba(200, 160, 50, 0.4);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 5;
+}
+
+/* Hover effect pulls the photo to the front and straightens it */
+.secret-photo-frame:hover {
+    transform: scale(1.15) rotate(0deg);
+    box-shadow: 0 18px 35px rgba(0,0,0,0.25);
+    z-index: 10;
+}
+
+.secret-photo-frame img {
+    width: 190px; /* Made the photos slightly bigger to fill the wider letter */
+    height: 190px;
+    object-fit: cover;
+    border-radius: 2px;
+    display: block;
+    background: #f0f0f0; 
+}
+
+/* 📱 Mobile Responsiveness */
+@media (max-width: 700px) {
+    .secret-letter-content {
+        padding: 40px 20px 30px 20px;
+    }
+
+    .secret-letter-content h2 {
+        font-size: 32px;
+    }
+
+    .secret-para {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .secret-photos-container {
+        gap: 12px; /* Tighter gap for smaller screens */
+    }
+    
+    .secret-photo-frame {
+        padding: 6px 6px 24px 6px;
+    }
+    
+    .secret-photo-frame img {
+        width: 105px; /* Perfect size to fit a 2x2 grid on a phone screen */
+        height: 105px;
+    }
+}
