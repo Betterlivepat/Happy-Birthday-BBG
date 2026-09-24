@@ -705,6 +705,34 @@
             <div class="washi-tape tape-sticky"></div>
             <p class="sticky-text">Hope this tiny world brought a big smile to your face today. You deserve all the love and happiness in the world! ❤️</p>
         </div>
+        <!-- 📜 Secret Rolled Letter -->
+        <div class="desk-rolled-letter" onclick="openSecretLetter(event)" title="Tap to unroll...">
+            <div class="ribbon"></div>
+        </div>
+
+        <!-- 💌 Hidden Modal for the Letter Content -->
+        <div id="secretLetterModal" class="secret-letter-modal" style="display:none;">
+            <div class="secret-letter-content">
+                <button class="close-letter-btn" onclick="closeSecretLetter()">✖</button>
+                <div class="story-header">
+                    <h2>Before We Were "Us"</h2>
+                </div>
+                <p class="secret-para">
+                    There were so many times we stood right next to each other in group photos before we were even a thing and had no idea what was coming kinda crzay that person standing next to me back then would become my favourite person today...... 
+                </p>
+                <div class="secret-photos-container">
+                    <div class="secret-photo-frame">
+                        <img src="images/photos/secret1.jpg" alt="Pre-dating Memory 1">
+                    </div>
+                    <div class="secret-photo-frame">
+                        <img src="images/photos/secret2.jpg" alt="Pre-dating Memory 2">
+                    </div>
+                    <div class="secret-photo-frame">
+                        <img src="images/photos/secret3.jpg" alt="Pre-dating Memory 3">
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- 🕯️ Interactive Cozy Flickering Candles -->
         <div class="desk-candle candle-top-right" onclick="tapDeskCandle(event)">
@@ -767,7 +795,7 @@
                     <img src="images/photos/photo12.jpg" alt="Memory 2">
                 </div>
                 <div class="card-back">
-                    <p>The first time I visited your place It already felt like home just because you were there 🌸</p>
+                    <p>The official "soft launch" photo! ✨ I couldn't stop smiling all day when you posted this 💕</p>
                 </div>
             </div>
         </div>
